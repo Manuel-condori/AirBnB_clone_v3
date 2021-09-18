@@ -22,10 +22,10 @@ def hello_world():
     return 'Hello HBNB!'
 
 
-@app.errorhandler(HTTPException)
+@app.errorhandler(404)
 def handle_exception(e):
     """Return JSON instead of HTML for HTTP errors."""
-    return jsonify({"error": "Not found"})
+    return jsonify({"error": "Not found"}), 404
 
 
 if __name__ == '__main__':
