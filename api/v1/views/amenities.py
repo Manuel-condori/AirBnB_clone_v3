@@ -45,7 +45,7 @@ def amenity_res(amenity_id):
             if key not in ignore:
                 amenity.__setattr__(key, val)
         models.storage.save()
-        return jsonify(state.to_dict())
+        return jsonify(amenity.to_dict())
 
     if req.method == 'DELETE':
         amenity.delete()
