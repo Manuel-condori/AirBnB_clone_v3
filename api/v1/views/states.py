@@ -10,7 +10,6 @@ from api.v1.views import app_views
 @app_views.route('/states', methods=['GET', 'POST'])
 def state_objects():
     """Returns state objects as JSON response"""
-    print('here', req.method)
     if req.method == 'GET':
         states = models.storage.all('State')
         states = [st.to_dict() for st in states.values()]
@@ -30,7 +29,6 @@ def state_objects():
 @app_views.route('/states/<state_id>', methods=['GET', 'PUT', 'DELETE'])
 def state_object(state_id):
     """Returns a state object as JSON response"""
-    print('Hit piojnt', req.method)
     state = models.storage.get('State', state_id)
     if state is None:
         abort(404)
