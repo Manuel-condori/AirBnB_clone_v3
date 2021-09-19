@@ -32,6 +32,7 @@ def place_objects(city_id):
             abort(404)
 
         place = Place(**body)
+        place.city_id = city_id
         place.save()
         return jsonify(place.to_dict()), 201
 
