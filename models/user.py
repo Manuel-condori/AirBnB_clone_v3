@@ -29,7 +29,7 @@ class User(BaseModel, Base):
         """initializes user"""
         if kwargs:
             passwd = kwargs.get('password', None)
-        if passwd not is None:
+        if passwd is not None:
             passwd = hashlib.md5(passwd.encode()).hexdigest()
             kwargs.update({'password': passwd})
         super().__init__(*args, **kwargs)
