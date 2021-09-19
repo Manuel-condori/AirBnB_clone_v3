@@ -8,7 +8,7 @@ from api.v1.views import app_views
 
 
 @app_views.route('/amenities', methods=['GET', 'POST'])
-def state_objects():
+def amenity_objects():
     """Returns amenity objects as JSON response"""
     if req.method == 'GET':
         amenities = models.storage.all('Amenity')
@@ -27,7 +27,7 @@ def state_objects():
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['GET', 'PUT', 'DELETE'])
-def state_object(amenity_id):
+def amenity_res(amenity_id):
     """Returns a Amenity object as JSON response"""
     amenity = models.storage.get('Amenity', amenity_id)
     if amenity is None:
