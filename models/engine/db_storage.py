@@ -53,6 +53,8 @@ class DBStorage:
 
     def get(self, cls, id):
         """Returns an object based on the class and id"""
+        if type(cls) is str:
+            cls = eval(cls)
         if not id or not cls or cls.__name__ not in classes:
             return None
         key = cls.__name__ + "." + str(id)

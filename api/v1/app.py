@@ -7,6 +7,7 @@ from api.v1.views import app_views
 from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 app.register_blueprint(app_views)
 
 
@@ -16,7 +17,7 @@ def teardown(exception):
     storage.close()
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/')
 def hello_world():
     """Returns a text when / route is requested"""
     return 'Hello HBNB!'
