@@ -27,7 +27,7 @@ def place_objects(city_id):
         if body.get('user_id', None) is None:
             abort(400, 'Missing user_id')
 
-        user = model.storage.get('User', body.get('user_id'))
+        user = models.storage.get('User', body.get('user_id'))
         if user is None:
             abort(404)
 
