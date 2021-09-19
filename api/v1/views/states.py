@@ -38,7 +38,7 @@ def state_object(state_id):
 
     if req.method == 'PUT':
         state_json = req.get_json()
-        if state is None:
+        if state_json is None:
             abort(400, 'Not a JSON')
         ignore = ['id', 'created_at', 'updated_at']
         for key, val in state_json.items():
