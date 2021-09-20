@@ -93,6 +93,9 @@ def place_search():
         [f_places.append(p) for p in places_dict.values()
          if p.city_id == ct_id]
 
+    if not city_ids:
+        f_places = list(places_dict.values())
+
     places = []
     for p in f_places:
         has_all = True
