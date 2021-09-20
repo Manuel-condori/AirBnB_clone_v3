@@ -36,6 +36,9 @@ responses:
         id:
           type: string
           description: City id
+        state_id:
+          type: string
+          description: State id at which the city belongs
         name:
           type: string
           description: City name
