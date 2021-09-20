@@ -1,0 +1,56 @@
+tags:
+  - Places-Reviews
+summary: Creates a new Review for a Place
+description: Creates a new Review object for a specified Place with the specified attributes
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: place_id
+    in: path
+    type: string
+    required: true
+  - name: text
+    in: body
+    type: string
+    required: true
+  - name: user_id
+    in: body
+    type: string
+    required: true
+responses:
+  201:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: Review id
+        place_id:
+          type: string
+          description: Place id of which this review refers
+        user_id:
+          type: string
+          description: User id which made the review
+        text:
+          type: string
+          description: Review description
+        created_at:
+          type: string
+          description: Review creation date
+        updated_at:
+          type: string
+          description: Last date at which Review was updated
+  400:
+    description: Error response code for user's bad request
+  404:
+    description: Not found error code
+    schema:
+      properties:
+        error:
+          type: string
+          default: Not Found

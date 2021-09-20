@@ -1,0 +1,24 @@
+tags:
+  - Reviews
+summary: Deletes an Review
+description: Deletes a Review object identified by review_id
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: review_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response (empty json)
+  404:
+    description: Error code for Not Found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found

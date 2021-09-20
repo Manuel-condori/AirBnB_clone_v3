@@ -1,0 +1,47 @@
+tags:
+  - Places-Reviews
+summary: List of Review objects of a specified Place
+description: Retrieves list of all Reviews of the specified Place
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: place_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      type: object
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: Review id
+        place_id:
+          type: string
+          description: Place id of which this review refers
+        user_id:
+          type: string
+          description: User id which made the review
+        text:
+          type: string
+          description: Review description
+        created_at:
+          type: string
+          description: Review creation date
+        updated_at:
+          type: string
+          description: Last date at which Review was updated
+  404:
+    description: Not found error code
+    schema:
+      properties:
+        error:
+          type: string
+          default: Not Found

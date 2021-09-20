@@ -5,8 +5,11 @@ from flask import jsonify, abort
 from flask import request as req
 from models.review import Review
 from api.v1.views import app_views
+from flasgger import swag_from
 
 
+@swag_from('defs/places_reviews/get.yml', methods=['GET'])
+@swag_from('defs/places_reviews/post.yml', methods=['POST'])
 @app_views.route('/places/<place_id>/reviews', methods=['GET', 'POST'])
 def review_objects(place_id):
     """Returns review objects as JSON response"""
@@ -37,6 +40,9 @@ def review_objects(place_id):
         return jsonify(review.to_dict()), 201
 
 
+@swag_from('defs/places_reviews/get_id.yml', methods=['GET'])
+@swag_from('defs/places_reviews/put_id.yml', methods=['PUT'])
+@swag_from('defs/places_reviews/delete_id.yml', methods=['DELETE'])
 @app_views.route('/reviews/<review_id>', methods=['GET', 'PUT', 'DELETE'])
 def review_res(review_id):
     """Returns a Review object as JSON response"""

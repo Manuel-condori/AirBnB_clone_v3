@@ -1,0 +1,49 @@
+tags:
+  - Reviews
+summary: Updates a Review
+description: Updates Review object attributes
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+    - name: review_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: Review id
+        place_id:
+          type: string
+          description: Place id of which this review refers
+        user_id:
+          type: string
+          description: User id which made the review
+        text:
+          type: string
+          description: Review description
+        created_at:
+          type: string
+          description: Review creation date
+        updated_at:
+          type: string
+          description: Last date at which Review was updated
+  400:
+    description: Error code for user's bad request
+  404:
+    description: Error code for Not Found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found
