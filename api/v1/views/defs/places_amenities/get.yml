@@ -1,0 +1,41 @@
+tags:
+  - Places-Amenities
+summary: List of Amenity objects
+description: Retrieves list of all Amenity objects of the specified Place
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: place_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      type: object
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: Amenity id
+        name:
+          type: string
+          description: Amenity name
+        created_at:
+          type: string
+          description: Amenity creation date
+        updated_at:
+          type: string
+          description: Last date at which Amenity was updated
+  404:
+    description: Not found error code
+    schema:
+      properties:
+        error:
+          type: string
+          default: Not Found

@@ -1,0 +1,45 @@
+tags:
+  - Places-Amenities
+summary: Creates a new Place-Amenity relation
+description: Creates a new relation between a Place and a Amenity  specified by its ids
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: place_id
+    in: path
+    type: string
+    required: true
+    - name: amenity_id
+    in: path
+    type: string
+    required: true
+responses:
+  201:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: Amenity id
+        name:
+          type: string
+          description: Amenity name
+        created_at:
+          type: string
+          description: Amenity creation date
+        updated_at:
+          type: string
+          description: Last date at which Amenity was updated
+  404:
+    description:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found

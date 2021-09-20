@@ -1,0 +1,28 @@
+tags:
+  - Places-Amenities
+summary: Deletes an Place-Amenity relation
+description: Deletes an Place-Amenity object relation by its ids
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: city_id
+    in: path
+    type: string
+    required: true
+  - name: amenity_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response (empty json)
+  404:
+    description:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found
