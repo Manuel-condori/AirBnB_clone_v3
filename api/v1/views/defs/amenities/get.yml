@@ -10,7 +10,7 @@ responses:
   200:
     description: Success response
     schema:
-      type: list
+      type: object
       properties:
         __class__:
           type: string
