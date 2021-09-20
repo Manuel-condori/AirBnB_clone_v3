@@ -1,0 +1,42 @@
+tags:
+  - Cities
+summary: List of City objects
+description: Retrieves list of all City objects of the specified State
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: state_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      type: object
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: City id
+        name:
+          type: string
+          description: City name
+        created_at:
+          type: string
+          description: City creation date
+        updated_at:
+          type: string
+          description: Last date at which City was updated
+  404:
+    description: Not found error code
+    schema:
+      properties:
+        error:
+          type: string
+          default: Not Found
+    

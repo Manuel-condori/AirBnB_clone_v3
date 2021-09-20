@@ -5,8 +5,11 @@ from flask import jsonify, abort
 from flask import request as req
 from models.city import City
 from api.v1.views import app_views
+from flasgger import swag_from
 
 
+@swag_from('defs/cities/get.yml', methods=['GET'])
+@swag_from('defs/cities/post.yml', methods=['POST'])
 @app_views.route('/states/<state_id>/cities', methods=['GET', 'POST'])
 def state_cities(state_id):
     """Returns city objects as JSON response"""
@@ -30,6 +33,10 @@ def state_cities(state_id):
         return jsonify(city.to_dict()), 201
 
 
+
+@swag_from('defs/cities/get_id.yml', methods=['GET'])
+@swag_from('defs/cities/put_id.yml', methods=['PUT'])
+@swag_from('defs/cities/delete_id.yml', methods=['DELETE'])
 @app_views.route('/cities/<city_id>', methods=['GET', 'PUT', 'DELETE'])
 def city_resource(city_id):
     """Returns a City object as JSON response"""

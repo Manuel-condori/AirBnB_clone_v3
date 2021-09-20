@@ -1,0 +1,43 @@
+tags:
+  - Cities
+summary: Update an City object
+description: Updates an City object identified by city_id
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: city_id
+    in: path
+    type: string
+    required: true    
+responses:
+  200:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: City id
+        name:
+          type: string
+          description: City name
+        created_at:
+          type: string
+          description: City creation date
+        updated_at:
+          type: string
+          description: Last date at which City was updated
+  400:
+    description: Error response code for user's bad request
+  404:
+    description:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found

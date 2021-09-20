@@ -1,0 +1,47 @@
+Flassgger end for all GET, PUT, DELTE
+GET: get end
+PUT: put end
+DELETE: delete end
+---
+paths:
+  '/amenities/{city_id}'
+get:
+put:
+delete:
+tags:
+  - GET, PUT, DELETE /amenities/{city_id}
+parameters:
+  - name: city_id
+    in: path
+    data: string
+    required: true
+    description: the unique amenity id
+  - name: name
+    in: body
+    data: string
+    required: false
+    schema:
+      properties:
+        name:
+          type: string
+          description: name attr
+responses:
+  200:
+    description: City object as JSON
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: City id
+        name:
+          type: string
+          description: City name
+        created_at:
+          type: string
+          description: City creation date
+        updated_at:
+          type: string
+          description: Last date at which City was update
