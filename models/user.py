@@ -27,6 +27,7 @@ class User(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         """initializes user"""
+        passwd = None
         if kwargs:
             passwd = kwargs.get('password', None)
         if passwd is not None:
