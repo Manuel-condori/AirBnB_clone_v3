@@ -71,12 +71,12 @@ def place_search():
         abort(400, 'Not a JSON')
 
     places = models.storage.all('Place')
+    places = [p.to_dict() for p in places.values()]
 
     states = body.get('states', [])
     cities = body.get('cities', [])
     amenities = body.get('amenities', [])
-    if not body or not states or not cities or not amenities:
-        places = [p.to_dict() for p in places.values()]
+    if not body or (not states and not cities and not amenities):
         return jsonify(places)
 
     for st in states:
