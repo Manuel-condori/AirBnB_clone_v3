@@ -62,3 +62,44 @@ def place_res(place_id):
         place.delete()
         models.storage.save()
         return jsonify({})
+
+
+@app_views.route('/places_search', methods=['POST'])
+def place_search():
+    body = req.get_json()
+    if body is None:
+        abort(400, 'Not a JSON')
+
+    places = models.storage.all('Place')
+
+    states = body.get('states', [])
+    cities = body.get('cities', [])
+    amenities = body.get('amenities', [])
+    if not body or not states or not cities or not amenities:
+        places = [p.to_dict() for p in places.values()]
+        return jsonify(places)
+
+    for st in states:
+        for ct in st.cities:
+            if ct.id not in cities:
+                cities.append(ct.id)
+
+    filtered_places = []
+    for ct_id in cities:
+        for p in places.values():
+            if p.city_id == ct_id:
+                filtered_places.append(p)
+                break
+
+    places = []
+    for p in filtered_places:
+        has_all = True
+        ids = [a.id for a in p.amenities]
+        for am_id in amenities:
+            if am_id not in ids:
+                has_all = False
+                break
+        if has_all:
+            places.append(p.to_dict())
+
+    return jsonify(places)
