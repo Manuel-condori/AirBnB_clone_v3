@@ -103,6 +103,7 @@ def place_search():
                 break
         if has_all:
             del p.amenities
+            del p.reviews
             places.append(p.to_dict())
 
     return jsonify(places)
