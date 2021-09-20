@@ -70,36 +70,39 @@ def place_search():
     if body is None:
         abort(400, 'Not a JSON')
 
-    places = models.storage.all('Place')
-    places = [p.to_dict() for p in places.values()]
+    places_dict = models.storage.all('Place')
 
-    states = body.get('states', [])
-    cities = body.get('cities', [])
-    amenities = body.get('amenities', [])
-    if not body or (not states and not cities and not amenities):
+    state_ids = body.get('states', [])
+    city_ids = body.get('cities', [])
+    amenity_ids = body.get('amenities', [])
+    if not body or (not state_ids and not city_ids and not amenity_ids):
+        places = [p.to_dict() for p in places_dict.values()]
         return jsonify(places)
 
-    for st in states:
-        for ct in st.cities:
-            if ct.id not in cities:
-                cities.append(ct.id)
+    states = []
+    if state_ids:
+        states = [st for st in models.storage.all('State').values()
+                  if st.id in state_ids]
 
-    filtered_places = []
-    for ct_id in cities:
-        for p in places.values():
-            if p.city_id == ct_id:
-                filtered_places.append(p)
-                break
+    for st in states:
+        [city_ids.append(ct.id) for ct in st.cities]
+
+    city_ids = list(set(city_ids))
+    f_places = []
+    for ct_id in city_ids:
+        [f_places.append(p) for p in places_dict.values()
+         if p.city_id == ct_id]
 
     places = []
-    for p in filtered_places:
+    for p in f_places:
         has_all = True
         ids = [a.id for a in p.amenities]
-        for am_id in amenities:
+        for am_id in amenity_ids:
             if am_id not in ids:
                 has_all = False
                 break
         if has_all:
+            del p.amenities
             places.append(p.to_dict())
 
     return jsonify(places)
