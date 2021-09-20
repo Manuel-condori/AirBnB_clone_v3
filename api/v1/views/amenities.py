@@ -5,8 +5,11 @@ from flask import jsonify, abort
 from flask import request as req
 from models.amenity import Amenity
 from api.v1.views import app_views
+from flasgger import swag_from
 
 
+@swag_from('defs/amenities/get.yml', methods=['GET'])
+@swag_from('defs/amenities/post.yml', methods=['POST'])
 @app_views.route('/amenities', methods=['GET', 'POST'])
 def amenity_objects():
     """Returns amenity objects as JSON response"""
@@ -26,6 +29,9 @@ def amenity_objects():
         return jsonify(amenity.to_dict()), 201
 
 
+@swag_from('defs/amenities/get_id.yml', methods=['GET'])
+@swag_from('defs/amenities/put_id.yml', methods=['PUT'])
+@swag_from('defs/amenities/delete_id.yml', methods=['DELETE'])
 @app_views.route('/amenities/<amenity_id>', methods=['GET', 'PUT', 'DELETE'])
 def amenity_res(amenity_id):
     """Returns a Amenity object as JSON response"""

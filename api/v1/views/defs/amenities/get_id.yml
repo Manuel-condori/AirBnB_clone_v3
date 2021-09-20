@@ -1,0 +1,41 @@
+tags:
+  - Amenities
+summary: Get an Amenity object
+description: Retrieves an Amenity object identified by amenity_id
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: amenity_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: Amenity id
+        name:
+          type: string
+          description: Amenity name
+        created_at:
+          type: string
+          description: Amenity creation date
+        updated_at:
+          type: string
+          description: Last date at which Amenity was updated
+  404:
+    description:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found
