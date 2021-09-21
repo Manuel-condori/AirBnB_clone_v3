@@ -33,7 +33,6 @@ def state_cities(state_id):
         return jsonify(city.to_dict()), 201
 
 
-
 @swag_from('defs/cities/get_id.yml', methods=['GET'])
 @swag_from('defs/cities/put_id.yml', methods=['PUT'])
 @swag_from('defs/cities/delete_id.yml', methods=['DELETE'])
