@@ -1,0 +1,35 @@
+tags:
+  - States
+summary: Creates a new State object
+description: Creates a new State object with the specified attributes
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: name
+    in: body
+    type: string
+    required: true    
+responses:
+  201:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: State id
+        name:
+          type: string
+          description: State name
+        created_at:
+          type: string
+          description: State creation date
+        updated_at:
+          type: string
+          description: Last date at which State was updated
+  400:
+    description: Error response code for user's bad request

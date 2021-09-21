@@ -1,0 +1,24 @@
+tags:
+  - States
+summary: Deletes an State object
+description: Deletes an State object identified by state_id
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: state_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response (empty json)
+  404:
+    description: Error for Not Found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found

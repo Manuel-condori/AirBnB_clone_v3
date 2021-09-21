@@ -5,8 +5,11 @@ from flask import jsonify, abort
 from flask import request as req
 from models.state import State
 from api.v1.views import app_views
+from flasgger import swag_from
 
 
+@swag_from('defs/states/get.yml', methods=['GET'])
+@swag_from('defs/states/post.yml', methods=['POST'])
 @app_views.route('/states', methods=['GET', 'POST'])
 def state_objects():
     """Returns state objects as JSON response"""
@@ -26,6 +29,9 @@ def state_objects():
         return jsonify(state.to_dict()), 201
 
 
+@swag_from('defs/states/get_id.yml', methods=['GET'])
+@swag_from('defs/states/put_id.yml', methods=['PUT'])
+@swag_from('defs/states/delete_id.yml', methods=['DELETE'])
 @app_views.route('/states/<state_id>', methods=['GET', 'PUT', 'DELETE'])
 def state_object(state_id):
     """Returns a state object as JSON response"""

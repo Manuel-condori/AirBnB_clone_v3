@@ -1,0 +1,43 @@
+tags:
+  - States
+summary: Update an State object
+description: Updates an State object identified by state_id
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: state_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: State id
+        name:
+          type: string
+          description: State name
+        created_at:
+          type: string
+          description: State creation date
+        updated_at:
+          type: string
+          description: Last date at which State was updated
+  400:
+    description: Error response code for user's bad request
+  404:
+    description: Error for Not Found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found
