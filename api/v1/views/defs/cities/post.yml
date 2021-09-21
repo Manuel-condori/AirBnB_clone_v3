@@ -1,5 +1,5 @@
 tags:
-  - Cities
+  - State-Cities
 summary: Creates a new City object
 description: Creates a new City object with the specified attributes
 consumes:
