@@ -7,7 +7,6 @@ from api.v1.views import app_views
 from werkzeug.exceptions import HTTPException
 from flask_cors import CORS
 from flasgger import Swagger
-from flasgger import swag_from
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -22,7 +21,6 @@ def teardown(exception):
     storage.close()
 
 
-@swag_from('defs/app.yml', methods=['GET'])
 @app.route('/')
 def hello_world():
     """Returns a text when / route is requested"""
