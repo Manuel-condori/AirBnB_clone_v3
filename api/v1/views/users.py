@@ -5,8 +5,11 @@ from flask import jsonify, abort
 from flask import request as req
 from models.user import User
 from api.v1.views import app_views
+from flasgger import swag_from
 
 
+@swag_from('defs/users/get.yml', methods=['GET'])
+@swag_from('defs/users/post.yml', methods=['POST'])
 @app_views.route('/users', methods=['GET', 'POST'])
 def user_objects():
     """Returns user objects as JSON response"""
@@ -28,6 +31,9 @@ def user_objects():
         return jsonify(user.to_dict()), 201
 
 
+@swag_from('defs/users/get_id.yml', methods=['GET'])
+@swag_from('defs/users/put_id.yml', methods=['PUT'])
+@swag_from('defs/users/delete_id.yml', methods=['DELETE'])
 @app_views.route('/users/<user_id>', methods=['GET', 'PUT', 'DELETE'])
 def user_res(user_id):
     """Returns a User object as JSON response"""

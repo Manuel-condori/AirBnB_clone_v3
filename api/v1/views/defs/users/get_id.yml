@@ -1,0 +1,50 @@
+tags:
+  - Users
+summary: Get an User object
+description: Retrieves an User object identified by user_id
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: user_id
+    in: path
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: User id
+        email:
+          type: string
+          description: User's email
+        password:
+          type: string
+          description: User's password
+        first_name:
+          type: string
+          description: User's first name
+        last_name:
+          type: string
+          description: User's last name
+        created_at:
+          type: string
+          description: User creation date
+        updated_at:
+          type: string
+          description: Last date at which User was updated
+  404:
+    description: Error for Not Found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found
