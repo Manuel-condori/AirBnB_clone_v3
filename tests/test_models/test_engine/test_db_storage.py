@@ -121,60 +121,60 @@ class TestDBStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to file.json"""
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_get_user(self):
         """Test that get method retrieves the correct object"""
         user = models.storage.get('User', TestDBStorage.u1.id)
         self.assertEqual(user, TestDBStorage.u1)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_get_amenity(self):
         """Test that get method retrieves the correct object"""
         amenity = models.storage.get('Amenity', TestDBStorage.a2.id)
         self.assertEqual(amenity, TestDBStorage.a2)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_get_state(self):
         """Test that get method retrieves the correct object"""
         state = models.storage.get('State', TestDBStorage.s2.id)
         self.assertEqual(state, TestDBStorage.s2)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_count_amenities(self):
         """Test that count method counts all instances of Amenity"""
         amenities_count = len(models.storage.all('Amenity').keys())
         count = models.storage.count('Amenity')
         self.assertEqual(amenities_count, count)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_count_cities(self):
         """Test that count method counts all instances of City"""
         cities_count = len(models.storage.all('City').keys())
         count = models.storage.count('City')
         self.assertEqual(cities_count, count)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_count_places(self):
         """Test that count method counts all instances of Place"""
         places_count = len(models.storage.all('Place').keys())
         count = models.storage.count('Place')
         self.assertEqual(places_count, count)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_count_reviews(self):
         """Test that count method counts all instances of Review"""
         reviews_count = len(models.storage.all('Review').keys())
         count = models.storage.count('Review')
         self.assertEqual(reviews_count, count)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_count_states(self):
         """Test that count method counts all instances of State"""
         states_count = len(models.storage.all('State').keys())
         count = models.storage.count('State')
         self.assertEqual(states_count, count)
 
-    @unittest.skipIf(models.storage_t == 'db', "not testing file storage")
+    @unittest.skipIf(models.storage_t != 'db', "not testing file storage")
     def test_count_users(self):
         """Test that count method counts all instances of User"""
         users_count = len(models.storage.all('User').keys())
