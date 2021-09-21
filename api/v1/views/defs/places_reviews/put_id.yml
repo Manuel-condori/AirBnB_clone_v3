@@ -7,7 +7,7 @@ consumes:
 produces:
   - application/json
 parameters:
-    - name: review_id
+  - name: review_id
     in: path
     type: string
     required: true
