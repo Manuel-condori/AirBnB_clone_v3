@@ -81,7 +81,7 @@ def place_search():
 
     state_ids = body.get('states', [])
     city_ids = body.get('cities', [])
-    amenity_ids = body.get('places', [])
+    amenity_ids = body.get('amenities', [])
     if not body or (not state_ids and not city_ids and not amenity_ids):
         places = [p.to_dict() for p in places_dict.values()]
         return jsonify(places)
@@ -106,13 +106,13 @@ def place_search():
     places = []
     for p in f_places:
         has_all = True
-        ids = [a.id for a in p.places]
+        ids = [a.id for a in p.amenities]
         for am_id in amenity_ids:
             if am_id not in ids:
                 has_all = False
                 break
         if has_all:
-            del p.places
+            del p.amenities
             del p.reviews
             places.append(p.to_dict())
 
