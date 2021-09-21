@@ -15,7 +15,7 @@ responses:
   200:
     description: Success response (empty json)
   404:
-    description:
+    description: Response error for Not Found
     schema:
       type: object
       properties:

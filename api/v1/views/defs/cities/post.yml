@@ -41,7 +41,7 @@ responses:
   400:
     description: Error response code for user's bad request
   404:
-    description: Not found error code
+    description: Response error for Not Found
     schema:
       properties:
         error:

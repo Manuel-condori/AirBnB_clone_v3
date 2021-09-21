@@ -32,7 +32,7 @@ responses:
           type: string
           description: Last date at which Amenity was updated
   404:
-    description:
+    description: Response error for Not Found
     schema:
       type: object
       properties:
