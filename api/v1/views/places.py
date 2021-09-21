@@ -5,8 +5,11 @@ from flask import jsonify, abort
 from flask import request as req
 from models.place import Place
 from api.v1.views import app_views
+from flasgger import swag_from
 
 
+@swag_from('defs/places/get.yml', methods=['GET'])
+@swag_from('defs/places/post.yml', methods=['POST'])
 @app_views.route('/cities/<city_id>/places', methods=['GET', 'POST'])
 def place_objects(city_id):
     """Returns place objects as JSON response"""
@@ -37,6 +40,9 @@ def place_objects(city_id):
         return jsonify(place.to_dict()), 201
 
 
+@swag_from('defs/places/get_id.yml', methods=['GET'])
+@swag_from('defs/places/put_id.yml', methods=['PUT'])
+@swag_from('defs/places/delete_id.yml', methods=['DELETE'])
 @app_views.route('/places/<place_id>', methods=['GET', 'PUT', 'DELETE'])
 def place_res(place_id):
     """Returns a Place object as JSON response"""
@@ -64,6 +70,7 @@ def place_res(place_id):
         return jsonify({})
 
 
+@swag_from('defs/places/search.yml', methods=['POST'])
 @app_views.route('/places_search', methods=['POST'])
 def place_search():
     body = req.get_json()
@@ -74,7 +81,7 @@ def place_search():
 
     state_ids = body.get('states', [])
     city_ids = body.get('cities', [])
-    amenity_ids = body.get('amenities', [])
+    amenity_ids = body.get('places', [])
     if not body or (not state_ids and not city_ids and not amenity_ids):
         places = [p.to_dict() for p in places_dict.values()]
         return jsonify(places)
@@ -99,13 +106,13 @@ def place_search():
     places = []
     for p in f_places:
         has_all = True
-        ids = [a.id for a in p.amenities]
+        ids = [a.id for a in p.places]
         for am_id in amenity_ids:
             if am_id not in ids:
                 has_all = False
                 break
         if has_all:
-            del p.amenities
+            del p.places
             del p.reviews
             places.append(p.to_dict())
 

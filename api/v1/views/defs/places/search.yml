@@ -1,0 +1,79 @@
+tags:
+  - Places-Search
+summary: List of Place objects
+description: Retrieves list of filtered  Place objects
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: states
+    in: body
+    type: string
+    required: true
+  - name: cities
+    in: body
+    type: string
+    required: true
+  - name: places
+    in: body
+    type: string
+    required: true
+responses:
+  200:
+    description: Success response
+    schema:
+      type: array
+      properties:
+        __class__:
+          type: string
+          description: class name
+        id:
+          type: string
+          description: Place id
+        city_id:
+          type: string
+          description: id of the City on which the Place is
+        user_id:
+          type: string
+          description: id of the person occupying the Place
+        name:
+          type: string
+          description: Place name
+        description:
+          type: string
+          description: Place description
+        number_rooms:
+          type: integer
+          description: Number of rooms available in the Place
+        number_bathrooms:
+          type: integer
+          description: Number bathrooms available in the Place
+        max_guest:
+          type: integer
+          description: Max number of guests the Place can hold
+        price_by_night:
+          type: number
+          description: Place price by night
+        latitude:
+          type: number
+          description: Place latitude
+        longitude:
+          type: number
+          description: Place longitude
+        created_at:
+          type: string
+          description: Place creation date
+        updated_at:
+          type: string
+          description: Last date at which Place was updated
+  400:
+    description: Error response for user's bad request
+  404:
+    description: Error response for Not found
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found

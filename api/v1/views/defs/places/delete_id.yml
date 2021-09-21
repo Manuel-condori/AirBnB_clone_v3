@@ -1,0 +1,24 @@
+tags:
+  - Places
+summary: Deletes an Place object
+description: Deletes an Place object identified by place_id
+consumes:
+  - application/json
+produces:
+  - application/json
+paramenters:
+  - name: place_id
+    in: path
+    type: string
+    required: true    
+responses:
+  200:
+    description: Success response (empty json)
+  404:
+    description:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          default: Not Found
