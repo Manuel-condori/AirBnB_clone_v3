@@ -1,0 +1,11 @@
+tags:
+  - App
+summary: Returns a string message
+description: Returns the string message 'Hello HBNB!'
+consumes:
+  - application/json
+produces:
+  - application/json
+responses:
+  200:
+    description: Success response ('Hello HBNB!')
