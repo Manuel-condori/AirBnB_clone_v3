@@ -1,0 +1,32 @@
+tags:
+  - Stats
+summary: Returns the count of each class entities
+description: Returns a JSON with the count of each class entities
+consumes:
+  - application/json
+produces:
+  - application/json
+responses:
+  200:
+    description: Success response
+    schema:
+      type: object
+      properties:
+        amenities:
+          type: integer
+          description: Number of Amenity entities
+        cities:
+          type: integer
+          description: Number of City entities
+        places:
+          type: integer
+          description: Number of Place entities
+        reviews:
+          type: integer
+          description: Number of Review entities
+        states:
+          type: integer
+          description: Number of State entities
+        users:
+          type: integer
+          description: Number of User entities
