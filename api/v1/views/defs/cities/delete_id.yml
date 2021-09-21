@@ -6,11 +6,11 @@ consumes:
   - application/json
 produces:
   - application/json
-paramenters:
+parameters:
   - name: city_id
     in: path
     type: string
-    required: true    
+    required: true
 responses:
   200:
     description: Success response (empty json)

@@ -6,11 +6,11 @@ consumes:
   - application/json
 produces:
   - application/json
-paramenters:
+parameters:
   - name: name
     in: body
     type: string
-    required: true    
+    required: true
 responses:
   201:
     description: Success response
