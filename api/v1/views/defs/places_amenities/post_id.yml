@@ -11,7 +11,7 @@ parameters:
     in: path
     type: string
     required: true
-    - name: amenity_id
+  - name: amenity_id
     in: path
     type: string
     required: true
