@@ -55,4 +55,4 @@ $ curl -X GET http://0.0.0.0:5000/api/v1/stats
 ```
 
 ### See the documentation
-After start the service go to ![](http://0.0.0.0:5000/apidocs) in your browser and you'll see a
+After start the service go to `http://0.0.0.0:5000/apidocs` in your browser and you'll see a
