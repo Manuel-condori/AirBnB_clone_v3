@@ -51,6 +51,8 @@ class DBStorage:
                     new_dict[key] = obj
         return (new_dict)
 
+    """add content task 3 get and count"""
+
     def get(self, cls, id):
         """Returns an object based on the class and id"""
         if type(cls) is str:
