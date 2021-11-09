@@ -35,6 +35,8 @@ class FileStorage:
             return new_dict
         return self.__objects
 
+    """add content of task 3 method get and count"""
+
     def get(self, cls, id):
         """Returns an object based on the class and id"""
         if type(cls) is str:
